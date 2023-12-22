@@ -30,7 +30,7 @@ class TFAnimation:
         """
         Add a frame to the animation.
         :param name: Name of the frame.
-        :param W_T_N: Pose of the frame in the parent frame.
+        :param parent: Name of the frame
         """
         self.graph.add_frame(name, parent)
         pth = self.graph.get_frame_path(name)
@@ -54,8 +54,13 @@ class TFAnimation:
         Push the animation to the meshcat server.
         """
         self.vis.set_animation(self.anim)
+
     def keep_alive(self):
-        self.vis.wait()
+        try:
+            while True:
+                time.sleep(0.1)
+        except KeyboardInterrupt:
+            pass
 
 class TFRealtimeVisualizer:
     def __init__(self):
@@ -66,7 +71,7 @@ class TFRealtimeVisualizer:
         """
         Add a frame to the animation.
         :param name: Name of the frame.
-        :param W_T_N: Pose of the frame in the parent frame.
+        :param parent: Name of parent frame.
         """
         self.graph.add_frame(name, parent)
         pth = self.graph.get_frame_path(name)
@@ -81,4 +86,4 @@ class TFRealtimeVisualizer:
         """
         assert P_T_N.shape == (4, 4), f"Expected shape (4, 4), got {P_T_N.shape}"
         pth = self.graph.get_frame_path(name)
-        self.vis[pth].set_transform(W_T_N)
+        self.vis[pth].set_transform(P_T_N)

@@ -1,7 +1,7 @@
 import sys
 from setuptools import setup, find_packages
 
-setup(name="tfviz",
+setup(name="tfvis",
     version="0.0.1",
     description="Simple Python API to Meshcat for grokking transforms",
     url="https://github.com/rdeits/meshcat-python",

@@ -46,14 +46,14 @@ args = argparser.parse_args()
 
 
 X_BEs = read_ee_poses(args.poses_path)
-tfviz = TFAnimation()
+tfani = TFAnimation()
 
-tfviz.add_frame("BASE")
-tfviz.set_frame_tf("BASE", np.eye(4))
-tfviz.add_frame("EEF", "BASE")
+tfani.add_frame("BASE")
+tfani.set_frame_tf("BASE", np.eye(4))
+tfani.add_frame("EEF", "BASE")
 
 for X_BE in X_BEs:
-    tfviz.set_frame_tf("EEF", X_BE.matrix())
-tfviz.push()
-tfviz.keep_alive()
+    tfani.set_frame_tf("EEF", X_BE.matrix())
+tfani.push()
+tfani.keep_alive()
 ```
