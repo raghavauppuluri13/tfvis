@@ -19,7 +19,7 @@ class TFGraph:
         assert name in self.frames, f"Frame {name} does not exist."
         return self.frames[name]
 
-class TFAnimation:
+class PlaybackVisualizer:
     def __init__(self):
         self.vis = meshcat.Visualizer().open()
         self.anim = Animation()
@@ -62,7 +62,7 @@ class TFAnimation:
         except KeyboardInterrupt:
             pass
 
-class TFRealtimeVisualizer:
+class RealtimeVisualizer:
     def __init__(self):
         self.vis = meshcat.Visualizer().open()
         self.graph = TFGraph()

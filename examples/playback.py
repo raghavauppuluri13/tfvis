@@ -1,5 +1,5 @@
 """Play an animation of EEF poses using meshcat."""
-from tfvis.visualizer import TFAnimation
+from tfvis.visualizer import PlaybackVisualizer
 import numpy as np
 import argparse
 import gtsam
@@ -28,13 +28,13 @@ args = argparser.parse_args()
 
 
 X_BEs = read_ee_poses(args.poses_path)
-tfani = TFAnimation()
+pbvis = PlaybackVisualizer()
 
-tfani.add_frame("BASE")
-tfani.set_frame_tf("BASE", np.eye(4))
-tfani.add_frame("EEF", "BASE")
+pbvis.add_frame("BASE")
+pbvis.set_frame_tf("BASE", np.eye(4))
+pbvis.add_frame("EEF", "BASE")
 
 for X_BE in X_BEs:
-    tfani.set_frame_tf("EEF", X_BE.matrix())
-tfani.push()
-tfani.keep_alive()
+    pbvis.set_frame_tf("EEF", X_BE.matrix())
+pbvis.push()
+pbvis.keep_alive()
