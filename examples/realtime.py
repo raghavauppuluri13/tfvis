@@ -1,4 +1,4 @@
-"""Play an animation of EEF poses using meshcat."""
+"""Visualize transforms in realtime"""
 import time
 from tfvis.visualizer import RealtimeVisualizer
 import numpy as np
@@ -12,12 +12,10 @@ rtv.set_frame_tf("BASE", np.eye(4))
 rtv.add_frame("EEF", "BASE")
 
 X_BE = gtsam.Pose3()
-R_start = gtsam.Rot3()  # Initialize the rotation, e.g., the default constructor for the identity rotation
-R_end = gtsam.Rot3.Rodrigues(0.6, 0.2, 0.3)  # Example using Rodrigues' formula
-t_start = gtsam.Point3(0, 0, 0)  # Initialize the translation
-t_end = gtsam.Point3(0.5, 0.5, 0.5)  # Initialize the translation
-
-# Create a Pose3 object
+R_start = gtsam.Rot3()
+R_end = gtsam.Rot3.Rodrigues(0.6, 0.2, 0.3)
+t_start = gtsam.Point3(0, 0, 0)
+t_end = gtsam.Point3(0.5, 0.5, 0.5)
 X_BE_start = gtsam.Pose3(R_start, t_start)
 X_BE_end = gtsam.Pose3(R_end, t_end)
 

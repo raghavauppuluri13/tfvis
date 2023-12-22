@@ -14,8 +14,7 @@ setup(name="tfvis",
       "numpy",
     ],
     extras_require={
-      'examples': ['gtsam',
-                   'argparse'],
+      'examples': ['gtsam'],
     },
     zip_safe=False,
 )
