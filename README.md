@@ -2,6 +2,8 @@
 
 Simple TF visualization
 
+![tfvis_demo](https://github.com/raghavauppuluri13/tfvis/assets/41026849/b373f82f-be7d-4d9c-810c-32486ba2b0ba)
+
 ## Quick start
 
 ```bash
